@@ -26,7 +26,7 @@ public class GitController {
             return ResponseEntity.ok(gitService.getUserNotForkedRepos(username));
         } catch (HttpClientErrorException.NotFound e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body(new ErrorResponse(404, "User not found"));
+                    .body(new ErrorResponse(404, "User " + username + " not found"));
         }
     }
 }
