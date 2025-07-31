@@ -23,5 +23,63 @@ This project is a simple Spring Boot service that exposes an HTTP endpoint for r
 
 ```bash
 mvn spring-boot:run
+```
+### Endpoint
+```bash
+GET /github/{username}
+```
 
+### Sample Response
+```
+json
+[
+  {
+    "repositoryName": "example-repo",
+    "userName": "mrblablak",
+    "branches": [
+      {
+        "name": "main",
+        "lastCommitSha": "e2f2f6d..."
+      }
+    ]
+  }
+]
+```
 
+### 404 Error Response (User Not Found)
+```
+json
+{
+  "status": 404,
+  "message": "User not found"
+}
+```
+
+## ✅ Tests
+This project includes a single integration test, as specified in the task requirements.
+
+### The test verifies:
+
+Each repository includes:
+
+- Repository name
+- Owner login
+- Branch list with:
+- Branch name
+- Latest commit SHA
+
+### The task states that mocking should be avoided if possible.
+
+#### Therefore:
+
+We only provide a real HTTP test using TestRestTemplate
+
+Filtering (excluding forks) is not verified directly (mocking required)
+
+### 🧪 Running Tests
+```
+mvn test
+```
+
+## ✍️ Author
+This project was developed as a interview test task by Michał Romak.
